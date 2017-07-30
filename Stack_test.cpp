@@ -5,11 +5,14 @@ using namespace std;
 
 int main(){
     Stack stack;
-    stack.Push(10);
-    stack.Push(100);
+    int a = 10;
+    stack.Push(a);
+    a = 100;
+    stack.Push(a);
     stack.Pop();
     stack.Pop();
-    stack.Push(8);
+    a = 8;
+    stack.Push(a);
     stack.Pop();
     stack.Pop();
     return 0;

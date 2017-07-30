@@ -13,6 +13,6 @@ class Stack{
         void Push(int data);    // push data in the stack.
         void Pop(); // pop data out the stack.
     private:
-        Node *top;
+        Node<int> *top;
 };
 #endif
