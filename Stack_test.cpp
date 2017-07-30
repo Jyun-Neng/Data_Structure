@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    Stack stack;
+    Stack<int> stack;
     int a = 10;
     stack.Push(a);
     a = 100;
