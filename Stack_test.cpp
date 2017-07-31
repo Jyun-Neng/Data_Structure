@@ -9,8 +9,10 @@ int main(){
     stack.Push(a);
     a = 100;
     stack.Push(a);
+    printf("The stack size is %d,\n", stack.Size());
     stack.Pop();
     stack.Pop();
+    printf("The stack size is %d,\n", stack.Size());
     a = 8;
     stack.Push(a);
     stack.Pop();
