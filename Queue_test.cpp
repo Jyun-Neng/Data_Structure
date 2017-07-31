@@ -9,6 +9,9 @@ int main(){
     queue.Enqueue(10);
     queue.Enqueue(7);
     queue.Enqueue(60);
+    queue.Enqueue(62);
+    queue.Enqueue(61);
+    queue.Enqueue(11);
     printf("The queue size is %d.\n", queue.Size());
     queue.Dequeue();
     queue.Dequeue();
