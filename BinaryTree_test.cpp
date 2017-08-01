@@ -1,13 +1,19 @@
 #include "BinaryTree.h"
 
 int main(){
-    BinaryTree<int> BTree;
-    BTree.AddRoot(0);
-    BTree.AddChild(1);
-    BTree.AddChild(2);
-    BTree.AddChild(3);
-    BTree.AddChild(4);
-    BTree.AddChild(5);
+    BinaryTree<char> BTree;
+    char data = 'a';
+    BTree.AddRoot(data);
+    data = 'b';
+    BTree.AddChild(data);
+    data = 'c';
+    BTree.AddChild(data);
+    data = 'd';
+    BTree.AddChild(data);
+    data = 'e';
+    BTree.AddChild(data);
+    data = '1';
+    BTree.AddChild(data);
     BTree.PreOrder();
     BTree.InOrder();
     BTree.PostOrder();

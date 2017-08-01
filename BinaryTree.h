@@ -4,14 +4,14 @@
 #include <queue>
 #include <cstddef>
 #include <cassert>
-#include <cstdio>
+#include <iostream>
 
 using namespace std;
 
 template <class T>
 void preorder(TNode<T> *position){
     if (position != NULL){
-        printf("%d\n", position -> getData());
+        cout << position -> getData() << endl;
         preorder(position -> getLeft());
         preorder(position -> getRight()); 
     }
@@ -21,7 +21,7 @@ template <class T>
 void inorder(TNode<T> *position){
     if (position != NULL){
         inorder(position -> getLeft());
-        printf("%d\n", position -> getData());
+        cout << position -> getData() << endl;
         inorder(position -> getRight());
     }
 }
@@ -31,7 +31,7 @@ void postorder(TNode<T> *position){
     if (position != NULL){
         postorder(position -> getLeft());
         postorder(position -> getRight());
-        printf("%d\n", position -> getData());
+        cout << position -> getData() << endl;
     }
 }
 
