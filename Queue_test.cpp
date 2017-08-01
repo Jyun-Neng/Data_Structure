@@ -4,14 +4,18 @@
 using namespace std;
 
 int main(){
-    Queue<int> queue;
-    queue.Enqueue(100);
-    queue.Enqueue(10);
-    queue.Enqueue(7);
-    queue.Enqueue(60);
-    queue.Enqueue(62);
-    queue.Enqueue(61);
-    queue.Enqueue(11);
+    Queue<char> queue;
+    char data = 'a';
+    queue.Enqueue(data);
+    queue.Enqueue(data);
+    queue.Enqueue(data);
+    data = 'k';
+    queue.Enqueue(data);
+    data = 'b';
+    queue.Enqueue(data);
+    queue.Enqueue(data);
+    data = 'c';
+    queue.Enqueue(data);
     printf("The queue size is %d.\n", queue.Size());
     queue.Dequeue();
     queue.Dequeue();

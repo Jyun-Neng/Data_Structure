@@ -3,7 +3,7 @@
 #include "Node.h"
 #include <cstddef>
 #include <cassert>
-#include <cstdio>
+#include <iostream>
 
 using namespace std;
 
@@ -36,7 +36,7 @@ class Queue{
         void Dequeue(){  // pop the front data.
             assert(!IsEmpty() && "Queue is empty!");    // check if the queue is empty.
             Node<T> *tmp_node = rear -> getNode();  // tmp_node = rear->next
-            printf("%d\n", tmp_node -> getData());
+            cout << tmp_node -> getData() << endl;
             rear -> addLink(tmp_node -> getNode());  // rear->next = rear->next->next
             n--;
             delete tmp_node;
