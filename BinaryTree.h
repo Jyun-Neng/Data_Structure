@@ -18,6 +18,24 @@ void preorder(TNode<T> *position){
 }
 
 template <class T>
+void inorder(TNode<T> *position){
+    if (position != NULL){
+        inorder(position -> getLeft());
+        printf("%d\n", position -> getData());
+        inorder(position -> getRight());
+    }
+}
+
+template <class T>
+void postorder(TNode<T> *position){
+    if (position != NULL){
+        postorder(position -> getLeft());
+        postorder(position -> getRight());
+        printf("%d\n", position -> getData());
+    }
+}
+
+template <class T>
 class BinaryTree{
     private:
         TNode<T> *root;
@@ -25,8 +43,8 @@ class BinaryTree{
         BinaryTree():root(NULL){}
         bool IsEmpty(){ return root == NULL;}
         void PreOrder(){ preorder(root);}   // DLR
-  //      void InOrder();
- //       void PostOrder();
+        void InOrder(){ inorder(root);}     // LDR
+        void PostOrder(){ postorder(root);}    // LRD
         void AddRoot(T data){
             TNode<T> *new_node = new TNode<T>;
             new_node -> addData(data);

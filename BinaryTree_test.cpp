@@ -9,6 +9,8 @@ int main(){
     BTree.AddChild(4);
     BTree.AddChild(5);
     BTree.PreOrder();
+    BTree.InOrder();
+    BTree.PostOrder();
 
     return 0;
 }
