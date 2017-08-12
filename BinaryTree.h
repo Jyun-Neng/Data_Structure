@@ -36,19 +36,38 @@ void postorder(TNode<T> *position){
 }
 
 template <class T>
+TNode<T> *copy(TNode<T> *ori){
+    TNode<T> *new_node = new TNode<T>;
+    if (ori == NULL){
+        new_node = NULL;
+        return new_node;
+    }
+    new_node -> addData(ori -> getData());
+    new_node -> addLeft(copy(ori -> getLeft()));
+    new_node -> addRight(copy(ori -> getRight()));
+    return new_node;
+}
+
+
+template <class T>
 class BinaryTree{
     private:
         TNode<T> *root;
+        int n;  // the number of nodes.
     public:
-        BinaryTree():root(NULL){}
+        BinaryTree():root(NULL),n(0){}
         bool IsEmpty(){ return root == NULL;}
+        TNode<T> *GetRoot(){ return root;}
+        int NodeNum(){ return n;}
         void PreOrder(){ preorder(root);}   // DLR
         void InOrder(){ inorder(root);}     // LDR
         void PostOrder(){ postorder(root);}    // LRD
+        void Copy(BinaryTree<T> BTree){ root = copy(BTree.GetRoot());}
         void AddRoot(T data){
             TNode<T> *new_node = new TNode<T>;
             new_node -> addData(data);
             root = new_node;
+            n = 1;
         }
         void AddChild(T data){
             assert(!IsEmpty() && "The tree is empty!");
@@ -71,14 +90,16 @@ class BinaryTree{
                 q.push(position -> getRight());
                 position = q.front();
                 q.pop();
-            }       
+            }
+            n++;
         }
-        void RemoveTree(TNode<T> *position){    // free the node space.
-            if (position == NULL) return;
-            RemoveTree(position -> getLeft());
-            RemoveTree(position -> getRight());
-            delete position;
-        }
-        ~BinaryTree(){ RemoveTree(root);}
+        // void RemoveTree(TNode<T> *position){    // free the node space.
+        //     if (position == NULL) return;
+        //     RemoveTree(position -> getLeft());
+        //     RemoveTree(position -> getRight());
+        //     cout << "delete" << endl;
+        //     delete position;
+        // }
+        //~BinaryTree(){ RemoveTree(root);}
 };
 #endif

@@ -1,4 +1,7 @@
 #include "BinaryTree.h"
+#include <cstdio>
+
+using namespace std;
 
 int main(){
     BinaryTree<char> BTree;
@@ -17,6 +20,12 @@ int main(){
     BTree.PreOrder();
     BTree.InOrder();
     BTree.PostOrder();
+    printf("%d\n", BTree.NodeNum());
+    
+    BinaryTree<char> BTree2;
+    BTree2.Copy(BTree);
+    BTree2.PreOrder();
+
 
     return 0;
 }
