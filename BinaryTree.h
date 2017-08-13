@@ -57,6 +57,14 @@ bool equal(TNode<T> *s, TNode<T> *t){
     return false;
 }
 
+template <class T>
+void remove(TNode<T> *position){
+    if (position == NULL) return;
+    remove(position -> getLeft());
+    remove(position -> getRight());
+    delete position;    // delete node data.   
+}
+
 
 template <class T>
 class BinaryTree{
@@ -73,6 +81,7 @@ class BinaryTree{
         void PostOrder(){ postorder(root);}    // LRD
         void Copy(BinaryTree<T> BTree){ root = copy(BTree.GetRoot());}  // copy one tree to another.
         bool Equal(BinaryTree<T> BTree){ return equal(root, BTree.GetRoot());}  // check if two binary tree are equal.
+        void RemoveTree(){ remove(root);}  // free the node space.
         void AddRoot(T data){
             TNode<T> *new_node = new TNode<T>;
             new_node -> addData(data);
@@ -103,17 +112,11 @@ class BinaryTree{
             }
             n++;
         }
-        BinaryTree operator=(const BinaryTree<T> &BTree){ Copy(BTree); return *this;}
+        BinaryTree operator=(const BinaryTree<T> &BTree){ RemoveTree(); Copy(BTree); return *this;}
 
         bool operator==(const BinaryTree<T> &BTree){ return Equal(BTree);}
 
-        // void RemoveTree(TNode<T> *position){    // free the node space.
-        //     if (position == NULL) return;
-        //     RemoveTree(position -> getLeft());
-        //     RemoveTree(position -> getRight());
-        //     cout << "delete" << endl;
-        //     delete position;
-        // }
+        
         //~BinaryTree(){ RemoveTree(root);}
 };
 #endif

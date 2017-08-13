@@ -49,6 +49,5 @@ int main(){
     BTree2.PreOrder();
     isEqual(BTree3,BTree2);
     isEqual(BTree2, BTree);
-
     return 0;
 }
