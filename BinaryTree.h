@@ -38,14 +38,23 @@ void postorder(TNode<T> *position){
 template <class T>
 TNode<T> *copy(TNode<T> *ori){
     TNode<T> *new_node = new TNode<T>;
-    if (ori == NULL){
-        new_node = NULL;
-        return new_node;
-    }
+    if (ori == NULL) return NULL;
     new_node -> addData(ori -> getData());
-    new_node -> addLeft(copy(ori -> getLeft()));
-    new_node -> addRight(copy(ori -> getRight()));
+    new_node -> addLeft(copy(ori -> getLeft()));    // copy the data of left childs.
+    new_node -> addRight(copy(ori -> getRight()));  // copy the data of right childs.
     return new_node;
+}
+
+template <class T>
+bool equal(TNode<T> *s, TNode<T> *t){
+    if (s==NULL && t==NULL) return true;
+    else if (s!=NULL && t!=NULL){
+        if (s->getData() == t->getData()){
+            if (equal(s->getLeft(), t->getLeft()))  // check if left childs are equal.
+                return equal(s->getRight(), t->getRight()); // check if right childs are equal.
+        }
+    }
+    return false;
 }
 
 
@@ -62,7 +71,8 @@ class BinaryTree{
         void PreOrder(){ preorder(root);}   // DLR
         void InOrder(){ inorder(root);}     // LDR
         void PostOrder(){ postorder(root);}    // LRD
-        void Copy(BinaryTree<T> BTree){ root = copy(BTree.GetRoot());}
+        void Copy(BinaryTree<T> BTree){ root = copy(BTree.GetRoot());}  // copy one tree to another.
+        bool Equal(BinaryTree<T> BTree){ return equal(root, BTree.GetRoot());}  // check if two binary tree are equal.
         void AddRoot(T data){
             TNode<T> *new_node = new TNode<T>;
             new_node -> addData(data);
@@ -93,6 +103,10 @@ class BinaryTree{
             }
             n++;
         }
+        BinaryTree operator=(const BinaryTree<T> &BTree){ Copy(BTree); return *this;}
+
+        bool operator==(const BinaryTree<T> &BTree){ return Equal(BTree);}
+
         // void RemoveTree(TNode<T> *position){    // free the node space.
         //     if (position == NULL) return;
         //     RemoveTree(position -> getLeft());
